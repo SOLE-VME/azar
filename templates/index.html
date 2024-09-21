@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUINI 6 GANADOR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        async function generateNumbers() {
+            try {
+                const response = await fetch('/generate');
+                if (!response.ok) {
+                    throw new Error("Error en la solicitud");
+                }
+                const numbers = await response.json();
+                document.getElementById('result').innerText = "Números Generados: " + numbers.join(', ');
+            } catch (error) {
+                console.error('Hubo un problema con la solicitud:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>QUINI 6 GANADOR</h1>
+    <p>Presiona el botón para generar 6 números aleatorios entre 00 y 45</p>
+    <button onclick="generateNumbers()">Generar Números</button>
+    <p id="result">Números Ganadores: </p>
+
+    <!-- Tréboles para la animación de fondo -->
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+    <div class="trebol"></div>
+</body>
+</html>
